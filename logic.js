@@ -33,11 +33,13 @@ Game.prototype.createArrInOrder = function() {
   }
 };
 
-//Pick random index numbers from arrInOrder and store it in arrShuffle (ArrInOrder ends empty)
+//Pick random index numbers from arrInOrder and store it
+//in arrShuffle (ArrInOrder ends empty)
+
 Game.prototype.createArrShuffle = function() {
 
   for(var i = 0; i < 25; i++){
-    var randomIndex = Math.floor(Math.random()* (this.arrInOrder.length));
+    var randomIndex = Math.floor(Math.random() * (this.arrInOrder.length));
     this.arrShuffle.push(this.arrInOrder[randomIndex]);
     this.arrInOrder.splice(randomIndex, 1);
   }
@@ -56,33 +58,44 @@ Game.prototype.displayNums = function() {
 
   for(var i = 0; i < this.cellNumber.length; i++){
     this.cellNumber[i].textContent = this.arrShuffle[i];
-  }
+  };
 };
 
 ///////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
-// Click number actions
+//--------------Click number actions---------------
 Game.prototype.clickNumber = function() {
-
+//var showNum = 1;
 var self = this;
+
+var nextNum = document.querySelector(".nextNum");
 
 for(var i = 0; i < this.cell.length; i++) {
   this.cellNumber[i].addEventListener("click", function() {
 
-    //conditional
-    if (this.innerHTML == self.checkNum) {
+    this.innerHTML = Number(this.innerHTML);
 
-      //this.parentNode.classList.add("cellRight");
-      //this.parentNode.classList.remove("cell");
+    //still to improve the else part
+    if (this.innerHTML == self.checkNum && this.innerHTML < 26) {
+
+      this.parentNode.classList.add("cellRight");
+      this.parentNode.classList.remove("cell");
       this.textContent = self.arrShuffle[self.checkNum + 24];
+      nextNum.textContent = self.chekNum;
       self.checkNum ++;
       console.log(self.checkNum);
-      }
+    } else {
+        this.parentNode.classList.add("cellDone");
+        this.parentNode.classList.remove("cellRight");
+        }
+
+
   });
 }
 };
 
+//-------------Countdown----------------------
 Game.prototype.countdown = function() {
 
   var message = document.querySelector("#info p").remove();
@@ -109,7 +122,17 @@ Game.prototype.countdown = function() {
       }, 1000)
   }
 
+  //---------------Show Next Number-----------------------
+  // Game.prototype.nextNum = function() {
+  //
+  //   var nextNum = document.querySelector(".nextNum");
+  //   if (this.checkNum < 51) {
+  //     nextNum.textContent = this.checkNum;
+  //   }
+  // };
 
+
+//--------------------timer-----------------------------
 Game.prototype.timer = function() {
 
   var minutesText = document.querySelector("#minutes");
@@ -125,7 +148,7 @@ var decimasTimer = setInterval(function() {
   if (decimas < 10) {
     decimasText.textContent = decimas;
     secondsText.textContent = seconds + ":";
-    minutesText.textContent = minutes + ":";
+
     decimas ++;
     if (decimas === 10) {
       decimas = 0;
@@ -135,12 +158,16 @@ var decimasTimer = setInterval(function() {
         seconds = 0;
         minutes++;
         }
-        if (minutes === 2) {
-          decimas = 0;
-          seconds = 0;
-          minutes = 0;
+        if (this.checkNum === 51) { //doesn't work!!
+          console.log("poop");
           clearInterval(decimasTimer);
         }
+          if (minutes === 2) {
+            decimas = 0;
+            seconds = 0;
+            minutes = 0;
+            clearInterval(decimasTimer);
+          }
   }
 }, 100)
 
