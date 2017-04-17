@@ -4,7 +4,7 @@ function Game(num){
   this.checkNum = 1;
   this.arrInOrder = new Array(); //Array to store the numbers
   this.arrShuffle = new Array(); //Array Shuffled
-  //this.count = 3;
+  this.count = 3;
   //this.numbers = numbers;
   //array goes here
 
@@ -88,19 +88,21 @@ Game.prototype.countdown = function() {
   var message = document.querySelector("#info p").remove();
   //message.innerHTML = "";
   var countdownNum = document.querySelector("#countdownNum")
-  var count = 3;
+  //var count = 3;
+
+  var self = this;
 
   var countToStart = setInterval(function () {
 
-        if (count > 0){
-          countdownNum.textContent = count;
+        if (self.count > 0){
+          countdownNum.textContent = self.count;
 
-          console.log(count);
-          count --;
-        } else if (count === 0) {
+          console.log(self.count);
+          self.count --;
+        } else if (self.count === 0) {
           countdownNum.textContent = "go!";
-          count --;
-        }  else if (count === -1) {
+          self.count --;
+        }  else if (self.count === -1) {
           document.querySelector("#info").remove();
           clearInterval(countToStart);
         }
@@ -122,8 +124,8 @@ var decimasTimer = setInterval(function() {
 
   if (decimas < 10) {
     decimasText.textContent = decimas;
-    secondsText.textContent = seconds;
-    minutesText.textContent = minutes;
+    secondsText.textContent = seconds + ":";
+    minutesText.textContent = minutes + ":";
     decimas ++;
     if (decimas === 10) {
       decimas = 0;
@@ -157,10 +159,11 @@ $(document).ready(function() {
 
     var startButton = document.querySelector("#startButton");
 
+
     startButton.addEventListener("click", function() {
 
       game.countdown();
-      game.timer();
+      setTimeout(function() { game.timer(); }, 5000);
       game.createArrInOrder();
       game.createArrShuffle();
       game.createLast25();
