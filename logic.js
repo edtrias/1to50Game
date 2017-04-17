@@ -61,6 +61,7 @@ Game.prototype.displayNums = function() {
 ///////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
+// Click number actions
 Game.prototype.clickNumber = function() {
 
 var self = this;
@@ -77,10 +78,37 @@ for(var i = 0; i < this.cell.length; i++) {
       self.checkNum ++;
       console.log(self.checkNum);
       }
-
   });
 }
 };
+
+Game.prototype.countdown = function() {
+
+  var message = document.querySelector("#info");
+  message.innerHTML = "";
+
+    var countdownNum = document.querySelector("#countdownNum")
+
+    var count = 3;
+
+      setInterval(function () {
+
+        if (count > 0){
+          countdownNum.textContent = count;
+
+          console.log(count);
+          count --
+        }
+      }, 1000)
+  }
+
+
+
+
+
+/////////////////////////////////////
+
+/////////////////////////////////////
 
 
 
@@ -88,11 +116,14 @@ $(document).ready(function() {
 
   var game = new Game(5);
 
+//Start Button actions
   Game.prototype.startGame = function() {
 
     var startButton = document.querySelector("#startButton");
 
     startButton.addEventListener("click", function() {
+
+      game.countdown();
       game.createArrInOrder();
       game.createArrShuffle();
       game.createLast25();
@@ -101,11 +132,6 @@ $(document).ready(function() {
     });
   };
 
-  // game.createArrInOrder();
-  // game.createArrShuffle();
-  // game.createLast25();
-  // game.displayNums();
-  // game.clickNumber();
   game.startGame();
 
 });
