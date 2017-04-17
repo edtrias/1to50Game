@@ -84,33 +84,30 @@ for(var i = 0; i < this.cell.length; i++) {
 
 Game.prototype.countdown = function() {
 
-  var message = document.querySelector("#info");
-  message.innerHTML = "";
+  var message = document.querySelector("#info p").remove();
+  //message.innerHTML = "";
+  var countdownNum = document.querySelector("#countdownNum")
+  var count = 3;
 
-    var countdownNum = document.querySelector("#countdownNum")
-
-    var count = 3;
-
-      setInterval(function () {
+  var countToStart = setInterval(function () {
 
         if (count > 0){
           countdownNum.textContent = count;
 
           console.log(count);
-          count --
+          count --;
+        } else if (count === 0) {
+          countdownNum.textContent = "go!";
+          count --;
+        }  else if (count === -1) {
+          document.querySelector("#info").remove();
+          clearInterval(countToStart);
         }
       }, 1000)
   }
 
-
-
-
-
-/////////////////////////////////////
-
-/////////////////////////////////////
-
-
+//-------------------------------------------------
+//--------------Game Execution---------------------
 
 $(document).ready(function() {
 
