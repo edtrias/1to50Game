@@ -80,8 +80,10 @@ body {
   -webkit-border-radius: 10px;
   background: #eee;
   border: 5px solid #ccc;
+  position: relative;
 
 }
+
 
 .gridContainer:after {
   content: "";
@@ -114,8 +116,6 @@ body {
   margin: 6px;
   background: #88a9d5;
 }
-
-
 
 .cellRight {
   width: 67.6px;
@@ -153,6 +153,25 @@ body {
   font-weight: bold;
   color: #eee;
   box-sizing: border-box;
+}
+
+#info {
+  width: 350px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  position: absolute;
+  font-size: 30px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+#info p {
+  width: 200px;
+  padding: 30px;
+  margin: 90px auto 0 auto;
+  text-align: center;
 }
 
 .section-button {

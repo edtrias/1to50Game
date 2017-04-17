@@ -23,6 +23,7 @@ function Game(num){
   }
 }
 
+
 // Create Array In Order from 1 to 25
 Game.prototype.createArrInOrder = function() {
 
