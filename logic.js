@@ -106,6 +106,41 @@ Game.prototype.countdown = function() {
       }, 1000)
   }
 
+
+Game.prototype.timer = function() {
+
+  var minutesText = document.querySelector("#minutes");
+  var secondsText = document.querySelector("seconds");
+  var decimasText = document.querySelector("miliseconds");
+
+  var decimas = 0;
+  var seconds = 0;
+  var minutes = 0;
+
+var decimasTimer = setInterval(function() {
+
+  if (decimas < 10) {
+    decimasText.textContent = decimas;
+    secondsText.textContent = seconds;
+    minutesText.textContent = minutes;
+    decimas ++;
+    if (decimas === 10) {
+      decimas = 0;
+      seconds++;
+    }
+      if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+        }
+        if (minutes === 2) {
+          clearInterval(decimasTimer);
+        }
+  }
+}, 100)
+
+}
+
+
 //-------------------------------------------------
 //--------------Game Execution---------------------
 
