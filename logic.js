@@ -1,7 +1,7 @@
 function Game(num){
   this.rows = num;
   this.col = num;
-  this.checkNum = 0;
+  this.checkNum = 1;
   this.arrInOrder = new Array(); //Array to store the numbers
   this.arrShuffle = new Array(); //Array Shuffled
   //this.numbers = numbers;
@@ -62,44 +62,49 @@ Game.prototype.displayNums = function() {
 
 Game.prototype.clickNumber = function() {
 
-var ps = document.querySelectorAll(".cell p");
+var self = this;
 
 for(var i = 0; i < this.cell.length; i++) {
   this.cellNumber[i].addEventListener("click", function() {
-    //console.log(this)
-    //var cellP = document.querySelectorAll(".cell p");
-    console.log(this.innerHTML);
 
-    // if (this.cellNumber[i].innerHTML === this.checkNum) {
-    //         this.cell = classList.add("cellRight");
-    //         this.cellNumber.textContent = arrShuffle[this.checkNum + 25];
-    //         this.checkNum ++;
-    //     } else {
-    //         this.cell = classList.add("cellWrong");
-    //     }
+    //conditional
+    if (this.innerHTML == self.checkNum) {
+
+      //this.parentNode.classList.add("cellRight");
+      //this.parentNode.classList.remove("cell");
+      this.textContent = self.arrShuffle[self.checkNum + 24];
+      self.checkNum ++;
+      console.log(self.checkNum);
+      }
+
   });
 }
 };
 
 
-//DON'T KNOW HOW TO INSERT FUNCTIONS INSIDE ADD EVENT LISTENER FUNCTION
-// Game.prototype.startGame = function() {
-//
-//   var startButton = document.querySelector("#startButton");
-//   startButton.addEventListener("click", function() {
-//
-//   });
-// };
-
 
 $(document).ready(function() {
 
   var game = new Game(5);
-  game.createArrInOrder();
-  game.createArrShuffle();
-  game.createLast25();
-  game.displayNums();
-  game.clickNumber();
-  //game.startGame();
+
+  Game.prototype.startGame = function() {
+
+    var startButton = document.querySelector("#startButton");
+
+    startButton.addEventListener("click", function() {
+      game.createArrInOrder();
+      game.createArrShuffle();
+      game.createLast25();
+      game.displayNums();
+      game.clickNumber();
+    });
+  };
+
+  // game.createArrInOrder();
+  // game.createArrShuffle();
+  // game.createLast25();
+  // game.displayNums();
+  // game.clickNumber();
+  game.startGame();
 
 });

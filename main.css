@@ -115,12 +115,14 @@ body {
   background: #88a9d5;
 }
 
-.cellRight:hover {
+
+
+.cellRight {
   width: 67.6px;
   height: 67.6px;
   margin: 1px;
   border: 3px solid #618dc7;
-  background: green;
+  background: none;
   float: left;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -128,7 +130,7 @@ body {
   box-sizing: border-box;
 }
 
-.cellWrong:hover {
+.cellWrong {
   width: 67.6px;
   height: 67.6px;
   margin: 1px;
@@ -144,12 +146,13 @@ body {
 .cellNumber {
   width: 67px;
   height: 67px;
+  padding: 15px;
   text-align: center;
-  margin-top: 15px;
   font-family: arial, sans-serif;
   font-size: 30px;
   font-weight: bold;
   color: #eee;
+  box-sizing: border-box;
 }
 
 .section-button {
