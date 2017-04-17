@@ -4,6 +4,7 @@ function Game(num){
   this.checkNum = 1;
   this.arrInOrder = new Array(); //Array to store the numbers
   this.arrShuffle = new Array(); //Array Shuffled
+  //this.count = 3;
   //this.numbers = numbers;
   //array goes here
 
@@ -110,8 +111,8 @@ Game.prototype.countdown = function() {
 Game.prototype.timer = function() {
 
   var minutesText = document.querySelector("#minutes");
-  var secondsText = document.querySelector("seconds");
-  var decimasText = document.querySelector("miliseconds");
+  var secondsText = document.querySelector("#seconds");
+  var decimasText = document.querySelector("#decimas");
 
   var decimas = 0;
   var seconds = 0;
@@ -133,6 +134,9 @@ var decimasTimer = setInterval(function() {
         minutes++;
         }
         if (minutes === 2) {
+          decimas = 0;
+          seconds = 0;
+          minutes = 0;
           clearInterval(decimasTimer);
         }
   }
@@ -156,6 +160,7 @@ $(document).ready(function() {
     startButton.addEventListener("click", function() {
 
       game.countdown();
+      game.timer();
       game.createArrInOrder();
       game.createArrShuffle();
       game.createLast25();
