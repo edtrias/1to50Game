@@ -7,15 +7,11 @@ function Game(num){
   this.count = 3;
   this.decimasTimer;
   this.isOn = false;
-  //this.numbers = numbers;
-  //array goes here
 
   for (var rowIndex = 0; rowIndex < this.rows ; rowIndex++) {
     for (var colIndex = 0; colIndex < this.col; colIndex++) {
     $(".gridContainer").append($("<div>")
     .addClass("cell")
-    //.attr("data-row", rowIndex)
-    //.attr("data-column", colIndex)
     .append($("<p>")
     .addClass("cellNumber")));
 
@@ -131,10 +127,8 @@ for(var i = 0; i < this.cell.length; i++) {
 //----------------------Countdown----------------------
 Game.prototype.countdown = function() {
 
-  var message = document.querySelector("#info p").remove();
-  //message.innerHTML = "";
+  var message = document.querySelector("#info p").style.visibility = "hidden";
   var countdownNum = document.querySelector("#countdownNum")
-  //var count = 3;
 
   var self = this;
 
@@ -167,8 +161,6 @@ Game.prototype.timer = function() {
   var seconds = 0;
   var minutes = 0;
 
-
-
 this.decimasTimer = setInterval(function() {
 
   if (decimas < 10) {
@@ -200,13 +192,18 @@ this.decimasTimer = setInterval(function() {
 }
 
 
-//-------------Initial onOffButton Color-------------
-
 //-------------------Reset Game----------------------
 
-// Game.prototype.resetGame = function() {
-//
-// }
+Game.prototype.resetGame = function() {
+
+  this.checkNum = 1;
+  this.count = 3;
+  console.log(this.checkNum);
+  console.log(this.count);
+  var message = document.querySelector("#info p").style.visibility = "visible";
+
+
+}
 
 
 //-------------------------------------------------
@@ -218,8 +215,6 @@ $(document).ready(function() {
   var game = new Game(5);
 
 //----Start Button actions-----
-
-
 
   Game.prototype.startGame = function() {
 
@@ -251,15 +246,14 @@ $(document).ready(function() {
           buttonAround.style.visibility = "visible";
         }, 5000);
         this.isOn = !this.isOn;
+      } else if (that.isOn === true){ //without this works, check game.resetGame()
+
+          game.resetGame();
+
+
+        //that.isOn = !that.isOn;
+
       }
-      // else if (that.isOn === true){
-      //
-      //
-      //   that.isOn = !that.isOn;
-      //   game.startGame();
-      // }
-
-
 
 
     });
