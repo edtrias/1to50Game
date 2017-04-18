@@ -5,6 +5,7 @@ function Game(num){
   this.arrInOrder = new Array(); //Array to store the numbers
   this.arrShuffle = new Array(); //Array Shuffled
   this.count = 3;
+  this.decimasTimer;
   //this.numbers = numbers;
   //array goes here
 
@@ -12,8 +13,8 @@ function Game(num){
     for (var colIndex = 0; colIndex < this.col; colIndex++) {
     $(".gridContainer").append($("<div>")
     .addClass("cell")
-    .attr("data-row", rowIndex)
-    .attr("data-column", colIndex)
+    //.attr("data-row", rowIndex)
+    //.attr("data-column", colIndex)
     .append($("<p>")
     .addClass("cellNumber")));
 
@@ -69,7 +70,10 @@ Game.prototype.clickNumber = function() {
 //var showNum = 1;
 var self = this;
 
-var nextNum = document.querySelector(".nextNum");
+var nextNumOne = document.querySelector("#nextNumOne");
+var nextNumTwo = document.querySelector("#nextNumTwo");
+
+nextNumOne.textContent = "1";
 
 for(var i = 0; i < this.cell.length; i++) {
   this.cellNumber[i].addEventListener("click", function() {
@@ -82,14 +86,23 @@ for(var i = 0; i < this.cell.length; i++) {
       this.parentNode.classList.add("cellRight");
       this.parentNode.classList.remove("cell");
       this.textContent = self.arrShuffle[self.checkNum + 24];
-      nextNum.textContent = self.chekNum;
+      nextNumOne.textContent = self.chekNum;
       self.checkNum ++;
       console.log(self.checkNum);
-    } else {
+      nextNumOne.textContent = self.checkNum;
+      nextNumTwo.textContent = self.checkNum + 1;
+        //$('.cellNumber').append('<p>' + game.checkNum + '</p>')
+    }  else if (this.innerHTML == self.checkNum && this.innerHTML > 25) {
         this.parentNode.classList.add("cellDone");
         this.parentNode.classList.remove("cellRight");
+        if (self.checkNum === 51) {
+          console.log("pop");
+          clearInterval(self.decimasTimer);
         }
+        self.checkNum ++;
+        console.log(self.checkNum);
 
+    }
 
   });
 }
@@ -143,11 +156,14 @@ Game.prototype.timer = function() {
   var seconds = 0;
   var minutes = 0;
 
-var decimasTimer = setInterval(function() {
+
+
+this.decimasTimer = setInterval(function() {
 
   if (decimas < 10) {
     decimasText.textContent = decimas;
     secondsText.textContent = seconds + ":";
+    minutesText.textContent = minutes + ":";
 
     decimas ++;
     if (decimas === 10) {
@@ -158,15 +174,14 @@ var decimasTimer = setInterval(function() {
         seconds = 0;
         minutes++;
         }
-        if (this.checkNum === 51) { //doesn't work!!
-          console.log("poop");
-          clearInterval(decimasTimer);
-        }
-          if (minutes === 2) {
-            decimas = 0;
-            seconds = 0;
-            minutes = 0;
-            clearInterval(decimasTimer);
+        // if (this.checkNum === 51) { //doesn't work!!
+        //
+        // }
+          if (minutes === 1) {
+            // decimas = 0;
+            // seconds = 0;
+            // minutes = 0;
+            clearInterval(this.decimasTimer);
           }
   }
 }, 100)
@@ -189,6 +204,7 @@ $(document).ready(function() {
 
     startButton.addEventListener("click", function() {
 
+      console.log(game.checkNum);
       game.countdown();
       setTimeout(function() { game.timer(); }, 5000);
       game.createArrInOrder();
