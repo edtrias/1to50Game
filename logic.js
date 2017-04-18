@@ -26,7 +26,7 @@ function Game(num){
 }
 
 
-// Create Array In Order from 1 to 25
+//----------Create Array In Order from 1 to 25------------------
 Game.prototype.createArrInOrder = function() {
 
   for(var i = 0; i < 25; i++) {
@@ -34,7 +34,7 @@ Game.prototype.createArrInOrder = function() {
   }
 };
 
-//Pick random index numbers from arrInOrder and store it
+//Pick random index numbers from arrInOrder and store it--------------
 //in arrShuffle (ArrInOrder ends empty)
 
 Game.prototype.createArrShuffle = function() {
@@ -46,7 +46,7 @@ Game.prototype.createArrShuffle = function() {
   }
 };
 
-//Create the last 25 ordered numbers of the arrShuffle
+//-----Create the last 25 ordered numbers of the arrShuffle-------------
 Game.prototype.createLast25 = function() {
 
   for(var i = 26; i < 51; i++) {
@@ -65,7 +65,7 @@ Game.prototype.displayNums = function() {
 ///////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
-//--------------Click number actions---------------
+//-------------------Click number actions---------------------------
 Game.prototype.clickNumber = function() {
 //var showNum = 1;
 var self = this;
@@ -127,7 +127,7 @@ for(var i = 0; i < this.cell.length; i++) {
   }
 };
 
-//-------------Countdown----------------------
+//----------------------Countdown----------------------
 Game.prototype.countdown = function() {
 
   var message = document.querySelector("#info p").remove();
@@ -154,17 +154,8 @@ Game.prototype.countdown = function() {
       }, 1000)
   }
 
-  //---------------Show Next Number-----------------------
-  // Game.prototype.nextNum = function() {
-  //
-  //   var nextNum = document.querySelector(".nextNum");
-  //   if (this.checkNum < 51) {
-  //     nextNum.textContent = this.checkNum;
-  //   }
-  // };
 
-
-//--------------------timer-----------------------------
+//-----------------------timer-----------------------------
 Game.prototype.timer = function() {
 
   var minutesText = document.querySelector("#minutes");
@@ -207,9 +198,16 @@ this.decimasTimer = setInterval(function() {
 
 }
 
+//-------------------Stop Game----------------------
+
+// Game.prototype.stopGame = function() {
+// 
+// }
+
 
 //-------------------------------------------------
 //--------------Game Execution---------------------
+//-------------------------------------------------
 
 $(document).ready(function() {
 
