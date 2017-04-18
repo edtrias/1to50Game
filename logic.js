@@ -17,9 +17,18 @@ function Game(num){
 
   this.cellNumber = document.querySelectorAll(".cellNumber");
   this.cell = document.querySelectorAll(".cell");
-
     }
   }
+  //this.message = document.querySelector("#info p"); //not sure it will be necessary
+
+
+  $(".gridContainer").append($("<div>").addClass("info"));
+  $(".info").append($("<p>Press Start and count until 50 as fast as you can!</p>").addClass("infoP"));
+  $(".gridContainer").append($("<p>").addClass("countdownNum"));
+  this.infoP = $(".infoP");
+  this.countdownNum = $(".countdownNum");
+  //this.pressStartMessage = document.querySelector(".info");
+  //this.pressStartMessage.textContent = "Press Start and count until 50 as fast as you can!";
 }
 
 
@@ -127,23 +136,24 @@ for(var i = 0; i < this.cell.length; i++) {
 //----------------------Countdown----------------------
 Game.prototype.countdown = function() {
 
-  var message = document.querySelector("#info p").style.visibility = "hidden";
-  var countdownNum = document.querySelector("#countdownNum")
+  //var messageToEdit = this.message;
+  this.infoP.remove();
+  //var countdownNum = document.querySelector(".countdownNum")[0];
 
   var self = this;
 
   var countToStart = setInterval(function () {
 
         if (self.count > 0){
-          countdownNum.textContent = self.count;
+          self.countdownNum.textContent = self.count;
 
           console.log(self.count);
           self.count --;
         } else if (self.count === 0) {
-          countdownNum.textContent = "go!";
+          self.countdownNum.textContent = "go!";
           self.count --;
         }  else if (self.count === -1) {
-          document.querySelector("#info").remove();
+          document.querySelector(".info").remove();
           clearInterval(countToStart);
         }
       }, 1000)

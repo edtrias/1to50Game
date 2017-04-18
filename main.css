@@ -191,7 +191,7 @@ body {
   box-sizing: border-box;
 }
 
-#info {
+.info {
   width: 350px;
   height: 350px;
   background: rgba(255, 255, 255, 0.7);
@@ -203,14 +203,14 @@ body {
   -webkit-border-radius: 10px;
 }
 
-#info p {
+.infoP {
   width: 200px;
   padding: 30px;
   margin: 90px auto 0 auto;
   text-align: center;
 }
 
-#countdownNum{
+.countdownNum{
   position: relative;
   top: -60px;
   text-align: center;
