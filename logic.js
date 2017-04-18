@@ -6,6 +6,7 @@ function Game(num){
   this.arrShuffle = new Array(); //Array Shuffled
   this.count = 3;
   this.decimasTimer;
+  this.isOn = false;
   //this.numbers = numbers;
   //array goes here
 
@@ -198,10 +199,13 @@ this.decimasTimer = setInterval(function() {
 
 }
 
-//-------------------Stop Game----------------------
 
-// Game.prototype.stopGame = function() {
-// 
+//-------------Initial onOffButton Color-------------
+
+//-------------------Reset Game----------------------
+
+// Game.prototype.resetGame = function() {
+//
 // }
 
 
@@ -213,22 +217,51 @@ $(document).ready(function() {
 
   var game = new Game(5);
 
-//Start Button actions
+//----Start Button actions-----
+
+
+
   Game.prototype.startGame = function() {
 
-    var startButton = document.querySelector("#startButton");
+    var onOffButton = document.querySelector("#onOffButton");
+    onOffButton.classList.add("startButton");
+    onOffButton.textContent = "Start";
+    var buttonAround = document.querySelector(".buttonAround")
+
+    var that = this;
+    onOffButton.addEventListener("click", function() {
+
+      if (that.isOn === false) {
+        console.log(game.checkNum);
+        game.countdown();
+        setTimeout(function() { game.timer(); }, 5000);
+        game.createArrInOrder();
+        game.createArrShuffle();
+        game.createLast25();
+        game.displayNums();
+        game.clickNumber();
+        this.classList.add("resetButton");
+        this.classList.remove("startButton");
+        this.style.visibility = "hidden";
+        buttonAround.style.visibility = "hidden";
+        this.textContent = "Reset";
+        setTimeout(function(){
+          console.log("pop");
+          this.onOffButton.style.visibility = "visible";
+          buttonAround.style.visibility = "visible";
+        }, 5000);
+        this.isOn = !this.isOn;
+      }
+      // else if (that.isOn === true){
+      //
+      //
+      //   that.isOn = !that.isOn;
+      //   game.startGame();
+      // }
 
 
-    startButton.addEventListener("click", function() {
 
-      console.log(game.checkNum);
-      game.countdown();
-      setTimeout(function() { game.timer(); }, 5000);
-      game.createArrInOrder();
-      game.createArrShuffle();
-      game.createLast25();
-      game.displayNums();
-      game.clickNumber();
+
     });
   };
 

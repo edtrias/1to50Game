@@ -80,9 +80,16 @@ body {
 
 .nextNumStyle {
   font-size: 30px;
-  color: #eee;
   font-weight: bolder;
   text-align: center;
+}
+
+#nextNumOne {
+  color: rgba(255, 255, 255, 1);
+}
+
+#nextNumTwo {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .subheader .timer {
@@ -163,7 +170,7 @@ body {
   width: 67.6px;
   height: 67.6px;
   margin: 1px;
-  border: 2px solid rgba(11, 65, 134, 0.4);
+  border: 3px solid rgba(11, 65, 134, 0.4);
   background: none;
   float: left;
   border-radius: 5px;
@@ -230,7 +237,7 @@ body {
 
 }
 
-#startButton {
+.startButton {
   width: 150px;
   height: 50px;
   margin: 2px auto 0 auto;
@@ -245,10 +252,41 @@ body {
   border: none;
 }
 
-#startButton:active {
-  background: rgba(13, 56, 136, 0.6);
+.startButton:hover {
+  rgba(13, 56, 136, 0.4)
 }
 
-#startButton:focus {
+.startButton:active {
+  background: rgba(13, 56, 136, 0.2);
+}
+
+.startButton:focus {
+  outline: none;
+}
+
+.resetButton {
+  width: 150px;
+  height: 50px;
+  margin: 2px auto 0 auto;
+  background: rgba(197, 37, 16, 0.7);
+  color: #eee;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 25px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: none;
+}
+
+.resetButton:hover {
+  background: rgba(197, 37, 16, 0.4);
+}
+
+.resetButton:active {
+  background: rgba(197, 37, 16, 0.2);
+}
+
+.resetButton:focus {
   outline: none;
 }
