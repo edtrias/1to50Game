@@ -60,14 +60,22 @@ body {
   width: 50px;
   height: 50px;
   float: left;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 7px;
   padding: 5px 0 5px 0;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  background: rgba(100, 100, 200, 0.9);
+
   color: #777;
   box-sizing: border-box;
+}
+
+#nexNumBoxOne {
+  background: rgba(11, 65, 134, 0.4);
+}
+
+#nexNumBoxTwo {
+  background: rgba(11, 65, 134, 0.2);
 }
 
 .nextNumStyle {
@@ -109,8 +117,8 @@ body {
   width: 67.6px;
   height: 67.6px;
   margin: 1px;
-  border: 3px solid #618dc7;
-  background: #3970b9;
+  border: 3px solid rgba(11, 65, 134, 0.05);
+  background: rgba(11, 65, 134, 0.65);
   float: left;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -119,8 +127,8 @@ body {
 }
 
 .cell:hover {
-  background: #3e78b7;
-  border: 3px solid #b0c6e3;
+  border: 3px solid rgba(11, 65, 134, 0.05);
+  background: rgba(11, 65, 134, 0.63);
   cursor: pointer;
 }
 
@@ -128,15 +136,15 @@ body {
   width: 57.6px;
   height: 57.6px;
   margin: 6px;
-  background: #88a9d5;
+  background: rgba(11, 65, 134, 0.4);
 }
 
 .cellRight {
   width: 67.6px;
   height: 67.6px;
   margin: 1px;
-  border: 3px solid #618dc7;
-  background: #335588;
+  border: 3px solid rgba(11, 65, 134, 0.08);
+  background: rgba(11, 65, 134, 0.68);
   float: left;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -145,8 +153,8 @@ body {
 }
 
 .cellRight:hover {
-  background: #325487;
-  border: 3px solid #b0c6e3;
+  border: 3px solid rgba(11, 65, 134, 0.08);
+  background: rgba(11, 65, 134, 0.66);
   cursor: pointer;
 }
 
@@ -154,7 +162,7 @@ body {
   width: 67.6px;
   height: 67.6px;
   margin: 1px;
-  border: 3px solid #618dc7;
+  border: 3px solid rgba(11, 65, 134, 0.4);
   background: none;
   float: left;
   border-radius: 5px;

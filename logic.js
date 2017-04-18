@@ -74,6 +74,7 @@ var nextNumOne = document.querySelector("#nextNumOne");
 var nextNumTwo = document.querySelector("#nextNumTwo");
 
 nextNumOne.textContent = "1";
+nextNumTwo.textContent = "2";
 
 for(var i = 0; i < this.cell.length; i++) {
   this.cellNumber[i].addEventListener("click", function() {
@@ -95,17 +96,35 @@ for(var i = 0; i < this.cell.length; i++) {
     }  else if (this.innerHTML == self.checkNum && this.innerHTML > 25) {
         this.parentNode.classList.add("cellDone");
         this.parentNode.classList.remove("cellRight");
-        if (self.checkNum === 51) {
+
+        if (self.checkNum === 50) {
           console.log("pop");
           clearInterval(self.decimasTimer);
         }
+
         self.checkNum ++;
         console.log(self.checkNum);
 
-    }
+        if (self.checkNum < 50) {
+          nextNumOne.textContent = self.checkNum;
+          nextNumTwo.textContent = self.checkNum + 1;
+        }
 
-  });
-}
+        if (self.checkNum === 50) {
+          nextNumOne.textContent = self.checkNum;
+          console.log("Box 2 Empty");
+          nextNumTwo.textContent = "";
+        }
+
+        if (self.checkNum === 51) {
+          console.log("textNumOne Empty");
+          nextNumOne.textContent = "";
+        }
+
+      }
+
+    });
+  }
 };
 
 //-------------Countdown----------------------
