@@ -210,13 +210,15 @@ body {
   text-align: center;
 }
 
-.countdownNum{
+.countdownNum {
   position: relative;
-  top: -60px;
   text-align: center;
   font-size: 160px;
+  top: 55px;
   z-index: 2;
   font-weight: bolder;
+  color: rgba(197, 37, 16, 0.9);
+
 
 }
 
