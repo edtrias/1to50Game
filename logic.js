@@ -148,6 +148,7 @@ for(var i = 0; i < this.cell.length; i++) {
 //----------------------Countdown----------------------
 Game.prototype.countdown = function() {
 
+  // this.infoP.style.visibility = "hidden";
   this.infoP.remove();
 
   var that = this;
@@ -222,14 +223,23 @@ Game.prototype.resetGlobalValues = function() {
   this.seconds = 0;
   this.minutes = 0;
   clearInterval(that.decimasTimer);
+
   this.decimasText.textContent = this.decimas;
   this.secondsText.textContent = this.seconds + ":";
   this.minutesText.textContent = this.minutes + ":";
 
-  //
-  // this.nextNumOne = "";
-  // this.nextNumTwo = "";
-  //
+  this.nextNumOne.textContent = "";
+  this.nextNumTwo.textContent = "";
+
+  for(var i = 0; i < this.cellNumber.length; i++){
+    this.cellNumber[i].textContent = "";
+  };
+
+  that.countdownNum[0].textContent = "";
+
+  document.querySelector(".info").style.visibility = "visible";
+  $(".info").prepend($("<p>Press Start and count until 50 as fast as you can!</p>").addClass("infoP"));
+
   // console.log("nextNum reset" + this.nextNumOne);
 
 }
