@@ -13,9 +13,9 @@ function Game(num){
 
   $(".gridContainer").append($("<div>").addClass("info"));
   $(".info").append($("<p>Press Start and count until 50 as fast as you can!</p>").addClass("infoP"));
-  $(".info").append($("<p></p>").addClass("countdownNum"));
+  //$(".info").append($("<p></p>").addClass("countdownNum"));
   this.infoP = $(".infoP");
-  this.countdownNum = $(".countdownNum");
+  //this.countdownNum = $(".countdownNum");
 
   for (var rowIndex = 0; rowIndex < this.rows ; rowIndex++) {
     for (var colIndex = 0; colIndex < this.col; colIndex++) {
@@ -149,7 +149,13 @@ for(var i = 0; i < this.cell.length; i++) {
 Game.prototype.countdown = function() {
 
   // this.infoP.style.visibility = "hidden";
-  this.infoP.remove();
+  //this.infoP.remove();
+  this.infoP[0].textContent = "";
+  this.infoP[0].classList.add("countdownNum");
+  this.countdownNum = $(".countdownNum");
+  this.infoP[0].classList.remove("infoP");
+
+
 
   var that = this;
 
@@ -238,8 +244,12 @@ Game.prototype.resetGlobalValues = function() {
   that.countdownNum[0].textContent = "";
 
   document.querySelector(".info").style.visibility = "visible";
-  $(".info").prepend($("<p>Press Start and count until 50 as fast as you can!</p>").addClass("infoP"));
+  //$(".info").prepend($("<p>Press Start and count until 50 as fast as you can!</p>").addClass("infoP"));
 
+  this.infoP[0].textContent = "Press Start and count until 50 as fast as you can!";
+  this.infoP[0].classList.add("infoP");
+  // this.countdownNum = $(".countdownNum");
+  this.infoP[0].classList.remove("countdownNum");
   // console.log("nextNum reset" + this.nextNumOne);
 
 }
