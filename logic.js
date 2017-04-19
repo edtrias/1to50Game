@@ -81,9 +81,6 @@ Game.prototype.clickNumber = function() {
 //var showNum = 1;
 var that = this;
 
-// var nextNumOne = document.querySelector("#nextNumOne");
-// var nextNumTwo = document.querySelector("#nextNumTwo");
-
 that.nextNumOne.textContent = "1";
 that.nextNumTwo.textContent = "2";
 
@@ -227,6 +224,23 @@ Game.prototype.resetGlobalValues = function() {
   this.minutes = 0;
   clearInterval(that.decimasTimer);
 
+  // $(".cellExist").each(function(index, cell){
+  //   if ($(cell).hasClass("cellDone")) {
+  //     $(cell).removeClass("cellDone");
+  //     $(cell).addClass("cell");
+  //   } else if ($(cell).hasClass("cellRight")) {
+  //     $(cell).removeClass("cellRight");
+  //     $(cell).addClass("cell");
+  //   }
+  // })
+}
+
+//-------------------Reset HTML---------------------------
+
+Game.prototype.resetHTML = function() {
+
+  var that = this;
+
   this.decimasText.textContent = this.decimas;
   this.secondsText.textContent = this.seconds + ":";
   this.minutesText.textContent = this.minutes + ":";
@@ -256,44 +270,17 @@ Game.prototype.resetGlobalValues = function() {
       this.cellExist[i].classList.add("cell");
       this.cellExist[i].classList.remove("cellRight");
     }
-
   };
-
-
-  // if ($(".cellExist").hasClass("cellDone")) {
-  //   $(".cellExist").addClass("cell");
-  //   $(".cellDone").remove();
-  // }
-  // else if ($(".gridContainer div").hasClass("cellRight")) {
-  //   $(".gridContainer div").addClass("cell");
-  //   $(".cellRight").remove();
-  // }
-
-  //$( "#mydiv" ).hasClass( "foo" )
-  // $(".gridContainer").append($("<div>")
-  // this.parentNode.classList.add("cellDone");
-  // this.parentNode.classList.remove("cellRight");
 }
-
-//-------------------Reset HTML---------------------------
-
-Game.prototype.resetHTML = function() {
-
-  //document.querySelector(".info").style.visibility = "visible";
-
-}
-
 
 //-------------------Reset Game----------------------
 
 Game.prototype.resetGame = function() {
 
 this.resetGlobalValues();
-
-// game.resetGlobalValues();
+this.resetHTML();
 
 }
-
 
 //-------------------------------------------------
 //--------------Game Execution---------------------
@@ -358,15 +345,8 @@ $(document).ready(function() {
         console.log("checkNum " + that.checkNum);
         console.log("decimas " + that.decimas + " seconds " + that.seconds + " minutes " + that.minutes);
 
-
-
-
-
       }
-
-
     });
   };
-
   game.startGame();
 });
