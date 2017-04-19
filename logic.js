@@ -19,17 +19,14 @@ function Game(num){
 
   for (var rowIndex = 0; rowIndex < this.rows ; rowIndex++) {
     for (var colIndex = 0; colIndex < this.col; colIndex++) {
-    $(".gridContainer").append($("<div>")
-    .addClass("cell")
-    .append($("<p>")
-    .addClass("cellNumber")));
-
-
+    $(".gridContainer").append($("<div>").addClass("cell").addClass("cellExist")
+    .append($("<p>").addClass("cellNumber")));
     }
   }
 
   this.cellNumber = document.querySelectorAll(".cellNumber");
   this.cell = document.querySelectorAll(".cell");
+  this.cellExist = document.querySelectorAll(".cellExist");
 
   this.minutesText = document.querySelector("#minutes"); //Not checked
   this.secondsText = document.querySelector("#seconds");
@@ -174,7 +171,7 @@ Game.prototype.countdown = function() {
           that.count --;
 
         }  else if (that.count === -1) {
-          document.querySelector(".info").style.visibility = "hidden"; //remove();
+          document.querySelector(".info").style.visibility = "hidden";
           clearInterval(countToStart);
         }
       }, 1000)
@@ -244,14 +241,38 @@ Game.prototype.resetGlobalValues = function() {
   that.countdownNum[0].textContent = "";
 
   document.querySelector(".info").style.visibility = "visible";
-  //$(".info").prepend($("<p>Press Start and count until 50 as fast as you can!</p>").addClass("infoP"));
 
   this.infoP[0].textContent = "Press Start and count until 50 as fast as you can!";
   this.infoP[0].classList.add("infoP");
-  // this.countdownNum = $(".countdownNum");
   this.infoP[0].classList.remove("countdownNum");
-  // console.log("nextNum reset" + this.nextNumOne);
 
+
+  for(var i = 0; i < this.cellExist.length; i++){
+
+    if (this.cellExist[i].classList.contains("cellDone")) {
+      this.cellExist[i].classList.add("cell");
+      this.cellExist[i].classList.remove("cellDone");
+    } else if (this.cellExist[i].classList.contains("cellRight")) {
+      this.cellExist[i].classList.add("cell");
+      this.cellExist[i].classList.remove("cellRight");
+    }
+
+  };
+
+
+  // if ($(".cellExist").hasClass("cellDone")) {
+  //   $(".cellExist").addClass("cell");
+  //   $(".cellDone").remove();
+  // }
+  // else if ($(".gridContainer div").hasClass("cellRight")) {
+  //   $(".gridContainer div").addClass("cell");
+  //   $(".cellRight").remove();
+  // }
+
+  //$( "#mydiv" ).hasClass( "foo" )
+  // $(".gridContainer").append($("<div>")
+  // this.parentNode.classList.add("cellDone");
+  // this.parentNode.classList.remove("cellRight");
 }
 
 //-------------------Reset HTML---------------------------
