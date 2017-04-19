@@ -7,15 +7,13 @@ function Game(num){
   this.count = 3;
   this.decimasTimer;
   this.isOn = false;
-  this.decimas = 0; //Not checked
+  this.decimas = 0;
   this.seconds = 0;
   this.minutes = 0;
 
   $(".gridContainer").append($("<div>").addClass("info"));
   $(".info").append($("<p>Press Start and count until 50 as fast as you can!</p>").addClass("infoP"));
-  //$(".info").append($("<p></p>").addClass("countdownNum"));
   this.infoP = $(".infoP");
-  //this.countdownNum = $(".countdownNum");
 
   for (var rowIndex = 0; rowIndex < this.rows ; rowIndex++) {
     for (var colIndex = 0; colIndex < this.col; colIndex++) {
@@ -28,7 +26,7 @@ function Game(num){
   this.cell = document.querySelectorAll(".cell");
   this.cellExist = document.querySelectorAll(".cellExist");
 
-  this.minutesText = document.querySelector("#minutes"); //Not checked
+  this.minutesText = document.querySelector("#minutes");
   this.secondsText = document.querySelector("#seconds");
   this.decimasText = document.querySelector("#decimas");
 
@@ -106,10 +104,14 @@ for(var i = 0; i < this.cell.length; i++) {
 
         this.parentNode.classList.add("cellDone");
         this.parentNode.classList.remove("cellRight");
+        this.textContent = "";
 
         if (that.checkNum === 50) {
 
           clearInterval(that.decimasTimer);
+          document.querySelector(".info").style.visibility = "visible";
+          that.infoP[0].textContent =  "Done!";
+
         }
 
         that.checkNum ++; // adds one
@@ -335,7 +337,6 @@ $(document).ready(function() {
 
         that.isOn = !that.isOn;
         console.log("isOn now is " + that.isOn)
-
 
         game.resetGame();
 
