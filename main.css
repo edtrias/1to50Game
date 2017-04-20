@@ -132,6 +132,7 @@ body {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .cell:hover {
@@ -155,6 +156,7 @@ body {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .cellRight:hover {
@@ -190,18 +192,19 @@ body {
   font-weight: bold;
   color: #eee;
   box-sizing: border-box;
+  cursor:pointer;
 }
 
 .info {
-  width: 350px;
-  height: 350px;
+  width: 348px;
+  height: 348px;
   background: rgba(255, 255, 255, 0.7);
   z-index: 1;
   position: absolute;
   font-size: 30px;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
 }
 
 .infoP {
@@ -214,7 +217,7 @@ body {
 .countdownNum {
   position: relative;
   text-align: center;
-  font-size: 150px;
+  font-size: 140px;
   top: 55px;
   z-index: 2;
   font-weight: bolder;
@@ -251,10 +254,12 @@ body {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border: none;
+  cursor: pointer;
 }
 
 .startButton:hover {
   rgba(13, 56, 136, 0.4)
+  cursor: pointer;
 }
 
 .startButton:active {
@@ -269,7 +274,7 @@ body {
   width: 150px;
   height: 50px;
   margin: 2px auto 0 auto;
-  background: rgba(197, 37, 16, 0.7);
+  background: rgba(197, 37, 16, 0.8);
   color: #eee;
   font-weight: 400;
   letter-spacing: 2px;
@@ -278,10 +283,12 @@ body {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border: none;
+  cursor: pointer;
 }
 
 .resetButton:hover {
   background: rgba(197, 37, 16, 0.4);
+  cursor: pointer;
 }
 
 .resetButton:active {
@@ -291,3 +298,80 @@ body {
 .resetButton:focus {
   outline: none;
 }
+
+/*
+////////////////////////////////////////////////////////////
+*/
+
+/*--------------iPHONE6----------------*/
+
+@media screen and (max-width: 450px){
+
+  #container {
+    width: 375px;
+    margin: 0px auto;
+  }
+
+  .header h1 {
+    padding: 10px;
+    font-size: 50px;
+  }
+
+  .subheader {
+    width: 355px;
+    height: 70px;
+  }
+
+  .gridContainer {
+    width: 340px;
+  }
+
+  .cell {
+    width: 66px;
+    height: 66px;
+    margin: 1px;
+    border: 2px solid rgba(11, 65, 134, 0.05);
+    background: rgba(11, 65, 134, 0.65);
+    float: left;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .cell:hover {
+    border: 2px solid rgba(11, 65, 134, 0.05);
+    background: rgba(11, 65, 134, 0.63);
+    cursor: pointer;
+  }
+
+  .cell:active {
+    background: rgba(11, 65, 134, 0.4);
+  }
+
+  .cellRight {
+    width: 66px;
+    height: 66px;
+  }
+
+  .cellDone{
+    width: 66px;
+    height: 66px;
+  }
+
+  .cellNumber {
+    width: 65.8px;
+    height: 65.8px;
+  }
+
+  .info {
+    width: 340px;
+    height: 340px;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+  }
+
+  .section-button {
+    padding: 15px 0 15px 0;
+  }
