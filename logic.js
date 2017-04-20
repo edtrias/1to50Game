@@ -78,7 +78,7 @@ Game.prototype.displayNums = function() {
 //-------------------Click number actions--------------------------
 
 Game.prototype.clickNumber = function() {
-//var showNum = 1;
+
 var that = this;
 
 that.nextNumOne.textContent = "1";
@@ -92,13 +92,12 @@ for(var i = 0; i < this.cell.length; i++) {
       this.parentNode.classList.add("cellRight");
       this.parentNode.classList.remove("cell");
       this.textContent = that.arrShuffle[that.checkNum + 24];
-      that.nextNumOne.textContent = that.chekNum;
+      that.nextNumOne.textContent = that.chekNum; //whow next num1
 
-      that.checkNum ++; // adds one
+      that.checkNum ++; //adds a num
 
-      console.log(that.checkNum); //Shows the number to click in console
-      that.nextNumOne.textContent = that.checkNum;
-      that.nextNumTwo.textContent = that.checkNum + 1;
+      that.nextNumOne.textContent = that.checkNum; //print next num1
+      that.nextNumTwo.textContent = that.checkNum + 1; //print next num2
 
     }  else if (this.innerHTML == that.checkNum && this.innerHTML > 25) {
 
@@ -114,25 +113,23 @@ for(var i = 0; i < this.cell.length; i++) {
 
         }
 
-        that.checkNum ++; // adds one
-
-        console.log(that.checkNum); //Shows the number to click in console
+        that.checkNum ++; //adds a num
 
         if (that.checkNum < 50) {
 
-          that.nextNumOne.textContent = that.checkNum;
-          that.nextNumTwo.textContent = that.checkNum + 1;
+          that.nextNumOne.textContent = that.checkNum; //print next num1
+          that.nextNumTwo.textContent = that.checkNum + 1; //print next num2
         }
 
         if (that.checkNum === 50) {
 
-          that.nextNumOne.textContent = that.checkNum;
-          that.nextNumTwo.textContent = "";
+          that.nextNumOne.textContent = that.checkNum; //print next num1
+          that.nextNumTwo.textContent = ""; //blanks show num2
         }
 
         if (that.checkNum === 51) {
 
-          that.nextNumOne.textContent = "";
+          that.nextNumOne.textContent = ""; //blanks show num1
         }
 
       }
@@ -316,7 +313,7 @@ $(document).ready(function() {
 
           this.onOffButton.style.visibility = "visible";
           buttonAround.style.visibility = "visible";
-          
+
         }, 5000);
 
         that.isOn = !that.isOn;
