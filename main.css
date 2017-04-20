@@ -198,7 +198,7 @@ body {
 .info {
   width: 348px;
   height: 348px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   z-index: 1;
   position: absolute;
   font-size: 30px;
@@ -258,12 +258,11 @@ body {
 }
 
 .startButton:hover {
-  rgba(13, 56, 136, 0.4)
   cursor: pointer;
 }
 
 .startButton:active {
-  background: rgba(13, 56, 136, 0.2);
+  background: rgba(13, 56, 136, 0.4);
 }
 
 .startButton:focus {
@@ -287,12 +286,11 @@ body {
 }
 
 .resetButton:hover {
-  background: rgba(197, 37, 16, 0.4);
   cursor: pointer;
 }
 
 .resetButton:active {
-  background: rgba(197, 37, 16, 0.2);
+  background: rgba(197, 37, 16, 0.4);
 }
 
 .resetButton:focus {

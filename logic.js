@@ -35,7 +35,8 @@ function Game(num){
 
 }
 
-//----------Create Array In Order from 1 to 25------------------
+//----------Create Array In Order from 1 to 25-----------------------
+
 Game.prototype.createArrInOrder = function() {
 
   for(var i = 0; i < 25; i++) {
@@ -44,7 +45,7 @@ Game.prototype.createArrInOrder = function() {
 };
 
 //Pick random index numbers from arrInOrder and store it--------------
-//in arrShuffle (ArrInOrder ends empty)
+//--------in arrShuffle (ArrInOrder ends empty)
 
 Game.prototype.createArrShuffle = function() {
 
@@ -55,7 +56,8 @@ Game.prototype.createArrShuffle = function() {
   }
 };
 
-//-----Create the last 25 ordered numbers of the arrShuffle-------------
+//-----Create the last 25 ordered numbers of the arrShuffle----------
+
 Game.prototype.createLast25 = function() {
 
   for(var i = 26; i < 51; i++) {
@@ -63,7 +65,8 @@ Game.prototype.createLast25 = function() {
   }
 };
 
-//Display numbers in the cell grid
+//-------------Display numbers in the cell grid----------------------
+
 Game.prototype.displayNums = function() {
 
   for(var i = 0; i < this.cellNumber.length; i++){
@@ -72,9 +75,8 @@ Game.prototype.displayNums = function() {
 };
 
 
-////////////////////////////////////////////////////////////////////
+//-------------------Click number actions--------------------------
 
-//-------------------Click number actions---------------------------
 Game.prototype.clickNumber = function() {
 //var showNum = 1;
 var that = this;
@@ -84,8 +86,6 @@ that.nextNumTwo.textContent = "2";
 
 for(var i = 0; i < this.cell.length; i++) {
   this.cellNumber[i].addEventListener("click", function() {
-
-    this.innerHTML = Number(this.innerHTML);
 
     if (this.innerHTML == that.checkNum && this.innerHTML < 26) {
 
@@ -104,7 +104,7 @@ for(var i = 0; i < this.cell.length; i++) {
 
         this.parentNode.classList.add("cellDone");
         this.parentNode.classList.remove("cellRight");
-        this.textContent = "";
+        this.innerHTML = "";
 
         if (that.checkNum === 50) {
 
@@ -141,17 +141,14 @@ for(var i = 0; i < this.cell.length; i++) {
   }
 };
 
-//----------------------Countdown----------------------
+//----------------------Countdown------------------------------
+
 Game.prototype.countdown = function() {
 
-  // this.infoP.style.visibility = "hidden";
-  //this.infoP.remove();
   this.infoP[0].textContent = "";
   this.infoP[0].classList.add("countdownNum");
   this.countdownNum = $(".countdownNum");
   this.infoP[0].classList.remove("infoP");
-
-
 
   var that = this;
 
@@ -176,8 +173,8 @@ Game.prototype.countdown = function() {
       }, 1000)
   }
 
-
 //-----------------------timer-----------------------------
+
 Game.prototype.timer = function() {
 
   var that = this;
@@ -199,24 +196,28 @@ this.decimasTimer = setInterval(function() {
         that.minutes++;
         }
 
-        if (that.minutes === 5) {
-          // decimas = 0;
-          // seconds = 0;
-          // minutes = 0;
-          clearInterval(that.decimasTimer);
-        }
+        //If it would be added a limit time in the future
+        //(still need to be added some code)
+
+        // if (that.minutes === 5) {
+        //      decimas = 0;
+        //      seconds = 0;
+        //      minutes = 0;
+        //   clearInterval(that.decimasTimer);
+        // }
   }
 }, 100)
 
 }
 
-//-------------------Reset Global values-------------------
+//-------------------Reset Global values-----------------------
 
 Game.prototype.resetGlobalValues = function() {
 
   var that = this;
 
   this.arrShuffle.length = 0;
+  this.arrInOrder.length = 0;
   this.count = 3;
 
   this.checkNum = 1;
@@ -226,18 +227,9 @@ Game.prototype.resetGlobalValues = function() {
   this.minutes = 0;
   clearInterval(that.decimasTimer);
 
-  // $(".cellExist").each(function(index, cell){
-  //   if ($(cell).hasClass("cellDone")) {
-  //     $(cell).removeClass("cellDone");
-  //     $(cell).addClass("cell");
-  //   } else if ($(cell).hasClass("cellRight")) {
-  //     $(cell).removeClass("cellRight");
-  //     $(cell).addClass("cell");
-  //   }
-  // })
 }
 
-//-------------------Reset HTML---------------------------
+//-----------------------Reset HTML---------------------------
 
 Game.prototype.resetHTML = function() {
 
@@ -275,24 +267,24 @@ Game.prototype.resetHTML = function() {
   };
 }
 
-//-------------------Reset Game----------------------
+//------------------------Reset Game----------------------
 
 Game.prototype.resetGame = function() {
 
-this.resetGlobalValues();
-this.resetHTML();
+  this.resetGlobalValues();
+  this.resetHTML();
 
 }
 
-//-------------------------------------------------
-//--------------Game Execution---------------------
-//-------------------------------------------------
+//-------------------------------------------------------
+//--------------------Game Execution---------------------
+//-------------------------------------------------------
 
 $(document).ready(function() {
 
   var game = new Game(5);
 
-//----Start Button actions-----
+//-------------------Start Button actions-----------------
 
   Game.prototype.startGame = function() {
 
@@ -321,13 +313,13 @@ $(document).ready(function() {
         this.textContent = "Reset";
 
         setTimeout(function(){
-          //console.log("pop");
+
           this.onOffButton.style.visibility = "visible";
           buttonAround.style.visibility = "visible";
+          
         }, 5000);
 
         that.isOn = !that.isOn;
-        console.log("isOn now is " + that.isOn)
 
       } else if (that.isOn === true){ //without this works, check game.resetGame()
 
@@ -336,15 +328,8 @@ $(document).ready(function() {
         this.textContent = "Start";
 
         that.isOn = !that.isOn;
-        console.log("isOn now is " + that.isOn)
 
         game.resetGame();
-
-        //console.log("arrInOrder " + that.arrInOrder);
-        console.log("arrShuffle " + that.arrShuffle);
-        console.log("count " + that.count);
-        console.log("checkNum " + that.checkNum);
-        console.log("decimas " + that.decimas + " seconds " + that.seconds + " minutes " + that.minutes);
 
       }
     });
